@@ -1,0 +1,486 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     18510,        476]
+NotebookOptionsPosition[     18195,        462]
+NotebookOutlinePosition[     18554,        478]
+CellTagsIndexPosition[     18511,        475]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"(*", " ", 
+    RowBox[{"50", " ", "WAYS", " ", "TO", " ", "COMPUTE", " ", "FIBONACCI"}], 
+    " ", "*)"}], " ", "\n", "\n", 
+   RowBox[{
+   "(*", " ", 
+    "\"\<I think mathematica is truly lovely, but also Wolfram has gone crazy \
+[...] there is too much bloat in it. \>", "*)"}], "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Dror", " ", "thinks", " ", "of", " ", "variables", " ", "as", " ", 
+     RowBox[{"numbers", "."}]}], " ", "*)"}], "\n", "\n", 
+   RowBox[{"(*", " ", 
+    RowBox[{"Naive", " ", "way"}], " ", "*)"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"f0", "[", "0", "]"}], " ", "=", " ", 
+      RowBox[{
+       RowBox[{"f0", "[", "1", "]"}], " ", "=", " ", "1"}]}], ";", " ", 
+     RowBox[{
+      RowBox[{"f0", "[", "n_", "]"}], " ", ":=", " ", 
+      RowBox[{
+       RowBox[{"f0", "[", 
+        RowBox[{"n", "-", "1"}], "]"}], " ", "+", " ", 
+       RowBox[{"f0", "[", 
+        RowBox[{"n", "-", "2"}], "]"}]}]}], ";"}], "\n", "\n", 
+    RowBox[{"(*", " ", 
+     RowBox[{
+     "Timing", " ", "evaluates", " ", "how", " ", "long", " ", "something", 
+      " ", "takes"}], " ", "*)"}], "\n", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"Echo", "@", 
+           RowBox[{"Timing", "[", 
+            RowBox[{"n", " ", "->", " ", 
+             RowBox[{"f0", "[", "n", "]"}]}], "]"}]}], " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"n", ",", " ", "1", ",", " ", "40"}], "}"}], "\n", "?", 
+           "Echo"}], "\n", 
+          RowBox[{"Echo", "[", 
+           RowBox[{"1", "+", "1"}], "]"}], "*", "7", " ", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+           "will", " ", "print", " ", "2", " ", "but", " ", "return", " ", 
+            "14"}], " ", "*)"}], "\n", "\n", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"If", " ", "you", " ", 
+             RowBox[{"don", "'"}], "t", " ", "know", " ", "how", " ", 
+             "something", " ", "works"}], ",", " ", 
+            RowBox[{
+             RowBox[{"do", " ", "?", "something"}], " ", 
+             RowBox[{"ex", ":", " ", 
+              RowBox[{"?", "Timing"}]}]}], ",", " ", 
+            RowBox[{"?", "Table"}]}], " ", "*)"}], "\n", 
+          RowBox[{"Table", "[", 
+           RowBox[{"ij", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", " ", "10"}], "}"}], ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"j", ",", " ", "10"}], "}"}]}], "]"}]}], " ", "//", " ", 
+         
+         RowBox[{"MatrixForm", "\n", "\n", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"We", "'"}], "ve", " ", "seen", " ", "that", " ", "the", 
+            " ", "naive", " ", "way", " ", "takes", " ", "way", " ", "too", 
+            " ", "long", " ", "to", " ", 
+            RowBox[{"do", ".", " ", "It"}], " ", "should", " ", "just", " ", 
+            "add", " ", "the", " ", "last", " ", "two", " ", "numbers", " ", 
+            "but", " ", "instead", " ", "it", " ", "computes", " ", "the", 
+            " ", "whole", " ", "stack", " ", "every", " ", 
+            RowBox[{"time", ".", " ", 
+             RowBox[{"Let", "'"}]}], "s", " ", "correct", " ", 
+            RowBox[{"it", ".", " ", 
+             RowBox[{"--", " ", "Dynamic"}]}], " ", "programming"}], " ", 
+           "*)"}], "\n", "\n", 
+          RowBox[{"(*", " ", 
+           RowBox[{
+            RowBox[{"There", "'"}], "s", " ", "a", " ", "difference", " ", 
+            "between", " ", "assignment", " ", "and", " ", "DELAYED", " ", 
+            RowBox[{"assignment", "."}]}], " ", "*)"}], "\n", "a"}]}], " ", 
+        "=", " ", 
+        RowBox[{
+         RowBox[{"n", "\n", "a"}], " ", ":=", " ", 
+         RowBox[{
+          RowBox[{"n", "\n", "\n", 
+           RowBox[{"(*", " ", 
+            RowBox[{
+             RowBox[{"When", " ", "Mathematica", " ", "does", " ", "things"}],
+              ",", " ", 
+             RowBox[{
+              RowBox[{"it", " ", "first", " ", "uses", " ", "a"}], " ", "=", 
+              " ", "n"}], ",", " ", 
+             RowBox[{
+              RowBox[{"then", " ", "a"}], " ", ":=", " ", "n"}]}], " ", 
+            "*)"}], "\n", 
+           RowBox[{"sq", "[", "x_", "]"}]}], " ", ":=", " ", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"x", "^", "2"}], "\n", 
+            RowBox[{"sq", "[", "7", "]"}], "\n", 
+            RowBox[{"sq", "[", "7", "]"}]}], " ", "=", " ", 
+           RowBox[{
+            RowBox[{"50", "\n", "\n", 
+             RowBox[{"(*", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                "Now", " ", "sq", " ", "will", " ", "first", " ", "use", " ", 
+                 "sq"}], " ", "=", " ", "50"}], ",", " ", 
+               RowBox[{"then", " ", 
+                RowBox[{"x", "^", "2."}]}]}], " ", "*)"}], "\n", 
+             RowBox[{"Table", "[", 
+              RowBox[{
+               RowBox[{"sq", "[", "i", "]"}], ",", " ", 
+               RowBox[{"{", 
+                RowBox[{"i", ",", " ", "10"}], "}"}]}], "]"}], "\n", "\n", 
+             RowBox[{"sq", "[", "x_", "]"}]}], " ", ":=", " ", 
+            RowBox[{
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"(", 
+                 RowBox[{
+                  RowBox[{"sq", "[", "x", "]"}], " ", "=", " ", 
+                  RowBox[{"x", "^", "2"}]}], ")"}], "\n", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                  RowBox[{
+                  "What", " ", "this", " ", "will", " ", "do", " ", "is", " ",
+                    "assign", " ", "all", " ", "the", " ", "previous", " ", 
+                   "values"}], " ", "-", " ", 
+                  RowBox[{
+                  "it", " ", "saves", " ", "them", " ", "in", " ", "an", " ", 
+                   "array", " ", "like", " ", 
+                   RowBox[{"you", "'"}], "d", " ", "expect", " ", "in", " ", 
+                   "dynamic", " ", 
+                   RowBox[{"programming", "."}]}]}], " ", "*)"}], "\n", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"sq", "[", "i", "]"}], ",", " ", 
+                  RowBox[{"{", 
+                   RowBox[{"i", ",", " ", "10"}], "}"}]}], "]"}], "\n", "\n", 
+                
+                RowBox[{"(*", " ", 
+                 RowBox[{"Note", " ", ":=", " ", 
+                  RowBox[{
+                   RowBox[{"binds", " ", "tighter", " ", "than"}], " ", "=", 
+                   " ", 
+                   RowBox[{"for", " ", "that", " ", 
+                    RowBox[{"reason", "."}]}]}]}], " ", "*)"}], "\n", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                 "Ask", " ", "computer", " ", "how", " ", "many", " ", 
+                  "values", " ", "it", " ", "has", " ", 
+                  RowBox[{"memorized", "."}]}], " ", "*)"}], "\n", "Global", 
+                " ", "`f1", "\n", "\n", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                 "Can", " ", "print", " ", "the", " ", "table", " ", "like", 
+                  " ", "an", " ", 
+                  RowBox[{"array", "."}]}], " ", "*)"}], "\n", 
+                RowBox[{"Table", "[", 
+                 RowBox[{
+                  RowBox[{"f1", "[", "k", "]"}], ",", " ", 
+                  RowBox[{"{", 
+                   RowBox[{"k", ",", " ", "0", ",", " ", "10"}], "}"}]}], 
+                 "]"}], "\n", "\n", 
+                RowBox[{"(*", " ", 
+                 RowBox[{
+                 "Can", " ", "clear", " ", "the", " ", "data", " ", "so", " ",
+                   "it", " ", "recomputes", " ", "it", " ", "using", " ", 
+                  "the", " ", "old", " ", 
+                  RowBox[{"rule", "."}]}], " ", "*)"}], "\n", 
+                RowBox[{"f1", "[", "3", "]"}]}], " ", "=."}], " ", "\n", "\n", 
+              RowBox[{"(*", 
+               RowBox[{"Other", " ", "ways", " ", "to", " ", "do", " ", 
+                RowBox[{"fib", " ", "--"}], " ", "more", " ", "imperative", 
+                " ", 
+                RowBox[{"syntax", "."}]}], " ", "*)"}], "\n", 
+              RowBox[{"{", 
+               RowBox[{"prev", ",", " ", "cur"}], "}"}]}], " ", "=", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"cur", ",", " ", 
+                 RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}], "\n", "k"}],
+               " ", "=", " ", 
+              RowBox[{"prev", " ", "=", " ", 
+               RowBox[{"cur", " ", "1"}]}]}]}]}]}]}]}]}], ";", "\n", 
+       RowBox[{"While", "[", 
+        RowBox[{
+         RowBox[{"k", " ", "<=", " ", "100"}], ",", " ", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+            RowBox[{"{", 
+             RowBox[{"cur", ",", " ", 
+              RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}]}], "}"}], ";", 
+          " ", 
+          RowBox[{"++", "k"}]}]}], "]"}], ";", 
+       RowBox[{"cur", " ", "=", " ", 
+        RowBox[{"prev", " ", "+", " ", "cur"}]}]}], ",", " ", 
+      RowBox[{"prev", " ", "=", " ", "cur"}]}]}]}], "}"}], ";"}], "\n", 
+ RowBox[{"cur", " ", "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"-", " ", "Aside"}], " ", "-"}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Easy", " ", "to", " ", "get", " ", "things", " ", "mixed", " ", "up", " ",
+     "when", " ", "needed", " ", "to", " ", "swap", " ", "two", " ", 
+    RowBox[{"variables", "."}]}], " ", "*)"}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "Clever", " ", "trick", " ", "to", " ", "switch", " ", "variables", " ", 
+    "if", " ", "they", " ", "are", " ", 
+    RowBox[{"numbers", "."}]}], " ", "*)"}]}], "\n", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"b", " ", "-", " ", "a"}]}], " "}], "\n", 
+ RowBox[{"b", " ", "=", " ", 
+  RowBox[{"b", " ", "-", " ", "a"}]}], "\n", 
+ RowBox[{
+  RowBox[{"a", " ", "=", " ", 
+   RowBox[{"a", " ", "+", " ", "b"}]}], "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "You", " ", "can", " ", "also", " ", "use", " ", "this", " ", "trick", " ",
+     "to", " ", "swap", " ", "two", " ", "rows", " ", "in", " ", "lin", " ", 
+    "alg"}], " ", "*)"}], " ", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"-", " ", "End"}], " ", "aside"}], " ", "-"}], " ", "*)"}], "\n",
+   "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"By", " ", "the", " ", "way"}], ",", " ", 
+    RowBox[{
+    "control", " ", "flow", " ", "statements", " ", "like", " ", 
+     "\"\<while\>\"", " ", "are", " ", "discouraged", " ", "because", " ", 
+     RowBox[{"there", "'"}], "s", " ", "usually", " ", "a", " ", "better", 
+     " ", "way", " ", "to", " ", "do", " ", "this", " ", "in", " ", 
+     RowBox[{"Wolfram", ".", " ", "Ex"}]}], ",", " ", 
+    RowBox[{
+    "make", " ", "a", " ", "list", " ", "of", " ", "numbers", " ", "from", 
+     " ", 
+     RowBox[{"(", 
+      RowBox[{"1", ",", "100"}], ")"}], " ", "then", " ", "replace", " ", 
+     "the", " ", "head", " ", "of", " ", "the", " ", "list", " ", "to", " ", 
+     "not", " ", "be", " ", "List", " ", "but", " ", 
+     RowBox[{"Times", ".", " ", "This"}], " ", "multiplies", " ", "every", 
+     " ", "number", " ", "on", " ", "the", " ", "list", " ", 
+     RowBox[{"together", "."}]}]}], "*)"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{";", 
+   RowBox[{
+   "?", "\n", 
+    "(* Translates to compound expression -> stored as an expr tree -> \
+evaluated but output forgotten, and then side-effects the other variables. \
+Returns only the last expression as the result. *) "}]}], "\n", "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "This", " ", "expression", " ", "evaluates", " ", "to", " ", "1."}], " ", 
+   "*)"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f2", "[", "n_", "]"}], " ", "=", " ", 
+   RowBox[{"(", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"k", ",", " ", "prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", "1", ",", " ", "1"}], "}"}]}], ";", "\n", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"k", " ", "<", " ", "n"}], ",", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+         RowBox[{"{", 
+          RowBox[{"cur", ",", " ", 
+           RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}]}], ";", " ", 
+        RowBox[{"++", "k"}]}]}], "]"}], ";", "\n", "cur"}], "\n", ")"}]}], 
+  "\n", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "This", " ", "is", " ", "because", " ", "we", " ", "only", " ", "have", 
+     " ", "a", " ", "current", " ", "assignment"}], ",", " ", 
+    RowBox[{
+    "so", " ", "the", " ", "while", " ", "loop", " ", "is", " ", "not", " ", 
+     RowBox[{"evaluated", ".", " ", "We"}], " ", "need", " ", "that", " ", 
+     "dynamic", " ", 
+     RowBox[{"evaluation", ".", " ", "The"}], " ", "next", " ", "one", " ", 
+     "returns", " ", "the", " ", "right", " ", 
+     RowBox[{"thing", "."}]}]}], "*)"}], "\n"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f2", "[", "n_", "]"}], " ", ":=", " ", 
+   RowBox[{"(", "\n", "\t", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"k", ",", " ", "prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", " ", "1", ",", " ", "1"}], "}"}]}], ";", "\n", 
+     RowBox[{"While", "[", 
+      RowBox[{
+       RowBox[{"k", " ", "<", " ", "n"}], ",", " ", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+         RowBox[{"{", 
+          RowBox[{"cur", ",", " ", 
+           RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}]}], ";", " ", 
+        RowBox[{"++", "k"}]}]}], "]"}], ";", "\n", "cur"}], "\n", ")"}]}], 
+  "\n"}], "\n", 
+ RowBox[{"Times", "@", 
+  RowBox[{"Range", "[", "5", "]"}]}], "\n", 
+ RowBox[{
+  RowBox[{"Times", "@@", 
+   RowBox[{"Range", "[", "5", "]"}]}], " ", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{"this", " ", "goes", " ", "one", " ", "level", " ", "below"}], 
+    ",", " ", 
+    RowBox[{"so", " ", "you", " ", "can", " ", 
+     RowBox[{"Times", "[", "Range", "]"}], " ", "instead", " ", "of", " ", 
+     RowBox[{"Times", "[", "List", "]"}], " ", "this", " ", 
+     RowBox[{"REPLACES", "."}]}]}], "*)"}], "\n", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      RowBox[{"h", "@", "l1"}], " ", "==", " ", 
+      RowBox[{"h", "[", "l1", "]"}], " ", "==", " ", "l1"}], " ", "//", " ", 
+     "h"}], ";", "\n", "\t", 
+    RowBox[{
+     RowBox[{"l1", " ", "~", " ", "h", " ", "~", " ", "l2"}], " ", "=", " ", 
+     RowBox[{"h", "[", 
+      RowBox[{"l1", ",", "l2"}], "]"}]}]}], " ", "*)"}], "\n"}], "\n", 
+ RowBox[{"f", "[", 
+  RowBox[{
+   RowBox[{"g", "[", "1", "]"}], ",", 
+   RowBox[{"g", "[", "2", "]"}]}], "]"}], "\n", 
+ RowBox[{
+  RowBox[{"h", "@@@", 
+   RowBox[{"f", "[", 
+    RowBox[{
+     RowBox[{"g", "[", "1", "]"}], ",", 
+     RowBox[{"g", "[", "2", "]"}]}], "]"}]}], "\n"}], "\n", 
+ RowBox[{"?", "For"}], "\n", 
+ RowBox[{"For", "[", 
+  RowBox[{
+   RowBox[{"k", " ", "=", " ", 
+    RowBox[{"1", " ", "=", " ", 
+     RowBox[{"cur", " ", "=", " ", 
+      RowBox[{"prev", " ", "=", " ", "1"}]}]}]}], ",", " ", 
+   RowBox[{"k", " ", "<", " ", "100"}], ",", " ", 
+   RowBox[{"++", 
+    RowBox[{",", " ", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+      RowBox[{"{", 
+       RowBox[{"cur", ",", " ", 
+        RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}]}]}]}]}], "]"}], "\n", 
+
+ RowBox[{"cur", "\n"}], "\n", 
+ RowBox[{"?", "Do"}], "\n", 
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", "1"}], "}"}]}], "\n", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"prev", ",", " ", "cur"}], "}"}], " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"cur", ",", " ", 
+       RowBox[{"prev", " ", "+", " ", "cur"}]}], "}"}]}], ",", " ", "99"}], 
+   "]"}], ";"}], "\n", 
+ RowBox[{"cur", "\n"}], "\n", 
+ RowBox[{
+  RowBox[{"f6", "[", "n_", "]"}], " ", ":=", " ", 
+  RowBox[{"While", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Length", "[", "fs", "]"}], " ", "<=", " ", "n"}], ",", " ", 
+    RowBox[{"fs", " ", "=", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Append", "[", 
+        RowBox[{"fs", ",", " ", 
+         RowBox[{
+          RowBox[{"fs", "[", 
+           RowBox[{"-", "1"}], "]"}], " ", "+", " ", 
+          RowBox[{"fs", "[", 
+           RowBox[{"-", "2"}], "]"}]}]}], "]"}], "\n", 
+       RowBox[{"f6", "[", "100", "]"}], "\n", "\n", 
+       RowBox[{"f9", "[", "n_", "]"}]}], " ", ":=", " ", 
+      RowBox[{"Module", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"fs", " ", "=", " ", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "1"}], "}"}], "\n", "\t", 
+           RowBox[{"While", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Length", "[", "fs", "]"}], " ", "<=", " ", "n"}], ",", 
+             " ", 
+             RowBox[{"AppendTo", "[", 
+              RowBox[{"fs", ",", " ", 
+               RowBox[{"1", " ", "+", " ", 
+                RowBox[{"Total", "@", 
+                 RowBox[{"Most", "@", "fs"}]}]}]}], "]"}]}], "]"}]}]}], ";", 
+         "\n", "fs"}], "\n"}]}]}]}]}], "]"}]}], "\n"}], "Input",
+ CellChangeTimes->{{3.7152978273221817`*^9, 
+  3.715297830939499*^9}},ExpressionUUID->"6a181a44-cdd1-4116-aebf-\
+123a924a240f"]
+},
+WindowSize->{808, 520},
+WindowMargins->{{60, Automatic}, {Automatic, 24}},
+FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
+10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 17633, 440, 2467, "Input",ExpressionUUID->"6a181a44-cdd1-4116-aebf-123a924a240f"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
