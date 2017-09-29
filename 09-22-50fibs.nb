@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     18510,        476]
-NotebookOptionsPosition[     18195,        462]
-NotebookOutlinePosition[     18554,        478]
-CellTagsIndexPosition[     18511,        475]
+NotebookDataLength[     19113,        490]
+NotebookOptionsPosition[     18600,        474]
+NotebookOutlinePosition[     18959,        490]
+CellTagsIndexPosition[     18916,        487]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -426,16 +426,17 @@ Returns only the last expression as the result. *) "}]}], "\n", "\n",
    RowBox[{
     RowBox[{
      RowBox[{"Length", "[", "fs", "]"}], " ", "<=", " ", "n"}], ",", " ", 
-    RowBox[{"fs", " ", "=", " ", 
+    RowBox[{
+     RowBox[{"fs", " ", "=", " ", 
+      RowBox[{"Append", "[", 
+       RowBox[{"fs", ",", " ", 
+        RowBox[{
+         RowBox[{"fs", "[", 
+          RowBox[{"-", "1"}], "]"}], " ", "+", " ", 
+         RowBox[{"fs", "[", 
+          RowBox[{"-", "2"}], "]"}]}]}], "]"}]}], ";", "\n", 
      RowBox[{
       RowBox[{
-       RowBox[{"Append", "[", 
-        RowBox[{"fs", ",", " ", 
-         RowBox[{
-          RowBox[{"fs", "[", 
-           RowBox[{"-", "1"}], "]"}], " ", "+", " ", 
-          RowBox[{"fs", "[", 
-           RowBox[{"-", "2"}], "]"}]}]}], "]"}], "\n", 
        RowBox[{"f6", "[", "100", "]"}], "\n", "\n", 
        RowBox[{"f9", "[", "n_", "]"}]}], " ", ":=", " ", 
       RowBox[{"Module", "[", 
@@ -456,9 +457,20 @@ Returns only the last expression as the result. *) "}]}], "\n", "\n",
                 RowBox[{"Total", "@", 
                  RowBox[{"Most", "@", "fs"}]}]}]}], "]"}]}], "]"}]}]}], ";", 
          "\n", "fs"}], "\n"}]}]}]}]}], "]"}]}], "\n"}], "Input",
- CellChangeTimes->{{3.7152978273221817`*^9, 
-  3.715297830939499*^9}},ExpressionUUID->"6a181a44-cdd1-4116-aebf-\
-123a924a240f"]
+ CellChangeTimes->{{3.7152978273221817`*^9, 3.715297830939499*^9}, 
+   3.715298608488166*^9},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"6a181a44-cdd1-4116-aebf-123a924a240f"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.715298578759897*^9, 3.715298592283317*^9}, 
+   3.7152986265197077`*^9},ExpressionUUID->"dd99ab73-cbba-4eac-8e02-\
+3dc695752c21"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.7152986281019382`*^9, 
+  3.715298628125517*^9}},ExpressionUUID->"28f95488-a7bb-4b09-b2e5-\
+865620cf1033"]
 },
 WindowSize->{808, 520},
 WindowMargins->{{60, Automatic}, {Automatic, 24}},
@@ -477,10 +489,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 17633, 440, 2467, "Input",ExpressionUUID->"6a181a44-cdd1-4116-aebf-123a924a240f"]
+Cell[558, 20, 17701, 442, 2467, "Input",ExpressionUUID->"6a181a44-cdd1-4116-aebf-123a924a240f"],
+Cell[18262, 464, 177, 3, 30, "Input",ExpressionUUID->"dd99ab73-cbba-4eac-8e02-3dc695752c21"],
+Cell[18442, 469, 154, 3, 30, InheritFromParent,ExpressionUUID->"28f95488-a7bb-4b09-b2e5-865620cf1033"]
 }
 ]
 *)
-
-(* End of internal cache information *)
 
